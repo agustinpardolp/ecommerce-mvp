@@ -45,6 +45,7 @@ const useTable = (products) => {
     const key = column.toLowerCase();
     const sortedProducts = sortProducts(products, key, order);
     manageDispatch(dispatch, updateProductList, sortedProducts);
+  
   };
 
   return {

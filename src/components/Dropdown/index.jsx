@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from "prop-types";
 import { Dropdown as SemanticDropdown } from 'semantic-ui-react'
 
 const Dropdown = ({ options, onChange, label }) => {
@@ -12,5 +13,12 @@ const Dropdown = ({ options, onChange, label }) => {
         </SemanticDropdown>
     )
 }
-
+const Options = PropTypes.shape({
+    key: PropTypes.number, text: PropTypes.string, value: PropTypes.string
+});
+Dropdown.propTypes = {
+    options: PropTypes.arrayOf(Options),
+    label: PropTypes.string,
+    onChange: PropTypes.func,
+};
 export default Dropdown

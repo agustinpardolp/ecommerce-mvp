@@ -7,6 +7,8 @@
   "table.title": "Titulo",
   "table.category": "Categoria",
   "table.price": "Precio",
-  "table.no.result": "No results found",
-  "button.mobile.add.cart": "Add to cart"
+  "table.no.result": " No se encontraron datos",
+  "button.mobile.add.cart": "Agregar al carrito",
+  "errorPage.message": "Ups, algo salio mal...por favor, reintenta en unos minutos",
+  "errorPage.back": "Volver a principal"
 }
