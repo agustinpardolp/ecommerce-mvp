@@ -1,11 +1,12 @@
 import React, { useMemo, useState } from 'react'
 import { Table as SemanticTable, Header, Image } from 'semantic-ui-react'
+import { FormattedMessage } from 'react-intl';
 import Pagination from '../Pagination';
 import { StyledTableContainer } from './styled-components';
 
 const TableDesktop = ({ columns, data, handlePagination, paginationData, handleOrderColumns }) => {
     const [columnOrder, setColumnOrder] = useState(false)
-    
+
     const handleOrder = (columnName) => {
         setColumnOrder(!columnOrder)
         handleOrderColumns(columnName, columnOrder)
@@ -36,7 +37,7 @@ const TableDesktop = ({ columns, data, handlePagination, paginationData, handleO
             return (
                 <tr>
                     <td>
-                        No hay datos disponibles
+                        <FormattedMessage id="table.no.result" />
                     </td>
                 </tr>
             );
@@ -50,7 +51,7 @@ const TableDesktop = ({ columns, data, handlePagination, paginationData, handleO
                         {columns && columns.map((column) => {
                             return (
                                 <SemanticTable.HeaderCell key={column.id} onClick={() => handleOrder(column.name)}>
-                                    {column.name}
+                                    <FormattedMessage id={column.name} />
                                 </SemanticTable.HeaderCell>
                             )
                         })}

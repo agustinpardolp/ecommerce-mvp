@@ -1,0 +1,12 @@
+{
+  "navbar.title": "Ecommerce - Challenge - MVP",
+  "navbar.subtitle": "Plataforma integral de compra online",
+  "submenu.title": "Productos",
+  "submenu.dropdown": "Categorias",
+  "submenu.search": "Buscar...",
+  "table.title": "Titulo",
+  "table.category": "Categoria",
+  "table.price": "Precio",
+  "table.no.result": "No results found",
+  "button.mobile.add.cart": "Add to cart"
+}

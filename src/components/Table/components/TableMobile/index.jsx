@@ -3,7 +3,7 @@ import Card from '../../../Card';
 import CardGrid from '../../../CardGrid/';
 import { StyledCardContainer, StyledInfoContainer, StyledNoResults } from './styled-components';
 
-const TableMobile = ({ data, handleClick = () => { }, btnLabel, originalData}) => {
+const TableMobile = ({ data, handleClick = () => { }, btnLabel}) => {
     const onRenderMobileTable = useMemo(() => {
         return data?.map((product) => {
             return (
