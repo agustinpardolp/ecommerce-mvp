@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { useIntl } from "react-intl";
 import Table from '../../components/Table';
 import { useRequest } from '../../hooks/useRequest'
 import useTable from '../../hooks/useTable';
@@ -11,7 +12,7 @@ import { COLUMN_VALUES } from './constants'
 const Products = () => {
   const dispatch = useDispatch();
   const { selectedProducts: { data: { selectedProducts } }, products: { data: { products } } } = useSelector((state) => state)
-
+  const intl = useIntl();
   const { handleSelectChange, handleSearch, handlePagination, currentPage, handleOrderColumns } = useTable(products)
   const [, loading, ,] = useRequest(
     {
@@ -34,7 +35,7 @@ const Products = () => {
   return (
     <div>
       <OptionsMenu handleSelectChange={handleSelectChange} handleSearch={handleSearch} />
-      <Table columns={COLUMN_VALUES} data={paginatedProducts()} btnLabel='Add to cart' handlePagination={handlePagination} paginationData={selectedProducts} handleOrderColumns={handleOrderColumns} />
+      <Table columns={COLUMN_VALUES} data={paginatedProducts()} btnLabel={intl.formatMessage({ id: "button.mobile.add.cart" })} handlePagination={handlePagination} paginationData={selectedProducts} handleOrderColumns={handleOrderColumns} />
     </div>
   )
 }

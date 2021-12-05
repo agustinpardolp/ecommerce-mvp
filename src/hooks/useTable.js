@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProductList } from "../store/actions/productsActions";
 import { debounce } from "../utils";
-import { manageDispatch } from "./constants";
+import { manageDispatch, sortProducts } from "./constants";
 
 //hook created to manage all Table functionality
 const useTable = (products) => {
@@ -43,10 +43,7 @@ const useTable = (products) => {
 
   const handleOrderColumns = (column, order) => {
     const key = column.toLowerCase();
-    const sortedProducts = products.sort((a, b) => {
-      const { x, y } = order ? { x: a, y: b } : { x: b, y: a };
-      return x[key] > y[key] ? 1 : -1;
-    });
+    const sortedProducts = sortProducts(products, key, order);
     manageDispatch(dispatch, updateProductList, sortedProducts);
   };
 

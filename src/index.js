@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import "semantic-ui-css/semantic.min.css";
 import "../src/assets/styles/index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import LanguageWrapper from "../src/components/LenguageWrapper";
 
 ReactDOM.render(
-  <App />,
+  <LanguageWrapper>
+    <App />
+  </LanguageWrapper>,
   document.getElementById("root")
 );
 
-reportWebVitals();
