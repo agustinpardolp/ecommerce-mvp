@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Dropdown as SemanticDropdown } from 'semantic-ui-react'
 
 const Dropdown = ({ options, onChange, label }) => {
+    const [value, setValue] = useState(null)
+    const handleChange = (e, { value }) => {
+        setValue(value)
+        onChange(value)
+    }
     return (
-        <SemanticDropdown item text={label} onChange={onChange}>
-            <SemanticDropdown.Menu>
-                {options && options.map((item) => <SemanticDropdown.Item key={item.id}>{item.label}</SemanticDropdown.Item>
-                )}
-            </SemanticDropdown.Menu>
+        <SemanticDropdown clearable item placeholder={value || label} value={value} selection onChange={handleChange} options={options}>
         </SemanticDropdown>
     )
 }
