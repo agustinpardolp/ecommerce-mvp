@@ -5,6 +5,7 @@ import Dropdown from '../../../../components/Dropdown';
 import { fetchCategoriesList } from '../../../../services/category-services';
 import { useRequest } from '../../../../hooks/useRequest';
 import { generateDropdownOptions } from './constants';
+import { StyledMenu, StyledOptionsMenu } from './styled-components';
 
 const OptionsMenu = ({ handleSelectChange, handleSearch }) => {
 
@@ -16,17 +17,15 @@ const OptionsMenu = ({ handleSelectChange, handleSearch }) => {
     );
 
     return (
-        <Menu secondary>
-            <Menu.Item as='h3'
-                name='Products'
-            />
-            <Menu.Menu position='right'>
+        <StyledOptionsMenu secondary className='mobile-menu'>
+            <Menu.Item as='h3' name='Products' />
+            <StyledMenu position='right'>
                 <Dropdown label={'Categorias'} options={generateDropdownOptions(categories)} onChange={handleSelectChange} />
                 <Menu.Item>
                     <Input icon='search' placeholder='Search...' onChange={handleSearch} />
                 </Menu.Item>
-            </Menu.Menu>
-        </Menu>
+            </StyledMenu>
+        </StyledOptionsMenu>
     )
 }
 export default OptionsMenu;

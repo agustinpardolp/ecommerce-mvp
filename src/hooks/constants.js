@@ -1,1 +1,7 @@
-export const REQUEST_OK = 200;
+export const manageDispatch = (dispatch, callback, data) => 
+  dispatch(
+    callback({
+      data,
+    })
+  );
+;
