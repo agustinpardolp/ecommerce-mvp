@@ -1,16 +1,16 @@
 import React from 'react'
-import { Pagination as SemanticPagination } from 'semantic-ui-react'
+import { getPages } from './constants';
+import { StyledPagination } from './styled-components'
 
-const Pagination = () => (
-  <SemanticPagination
-  boundaryRange={0}
-  defaultActivePage={1}
-  ellipsisItem={null}
-  firstItem={null}
-  lastItem={null}
-  siblingRange={1}
-  totalPages={10}
-/>
-)
+const Pagination = ({ handlePagination, paginationData }) => {
+  const pageRange = getPages(paginationData)
+  return (
+    <StyledPagination>
+      {pageRange?.map((page) => {
+        return <span key={page} onClick={()=>handlePagination(page)}>{page}</span>
+      })}
+    </StyledPagination>
+  )
+}
 
 export default Pagination

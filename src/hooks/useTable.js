@@ -1,26 +1,22 @@
-import react, { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProductList } from "../store/actions/productsActions";
 import { debounce } from "../utils";
+import { manageDispatch } from "./constants";
 
+//hook created to manage all Table functionality
 const useTable = (products) => {
   const dispatch = useDispatch();
+
+  const [currentPage, setCurrentPage] = useState(1);
   const handleSelectChange = (value) => {
     if (!value) {
-      dispatch(
-        updateProductList({
-          data: products,
-        })
-      );
+      manageDispatch(dispatch, updateProductList, products);
     } else {
       const productsFiltered = products.filter(
         (elements) => elements.category === value
       );
-      dispatch(
-        updateProductList({
-          data: productsFiltered,
-        })
-      );
+      manageDispatch(dispatch, updateProductList, productsFiltered);
     }
   };
 
@@ -28,11 +24,7 @@ const useTable = (products) => {
     const search = products.filter((element) =>
       element.title.toLowerCase().includes(value.toLowerCase())
     );
-    dispatch(
-      updateProductList({
-        data: search,
-      })
-    );
+    manageDispatch(dispatch, updateProductList, search);
   };
 
   const handleSearchDebouce = debounce(handleDataChange);
@@ -42,12 +34,25 @@ const useTable = (products) => {
     },
     [handleSearchDebouce]
   );
-  const handlePagination=()=>{
-    
-  }
+  const handlePagination = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleOrderColumns = (column, order) => {
+    const key = column.toLowerCase();
+    const sortedProducts = products.sort((a, b) => {
+      const { x, y } = order ? { x: a, y: b } : { x: b, y: a };
+      return x[key] > y[key] ? 1 : -1;
+    });
+    manageDispatch(dispatch, updateProductList, sortedProducts);
+  };
+
   return {
     handleSelectChange,
     handleSearch,
+    handlePagination,
+    currentPage,
+    handleOrderColumns,
   };
 };
 

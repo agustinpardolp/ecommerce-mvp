@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import Table from '../../components/Table';
 import { useRequest } from '../../hooks/useRequest'
@@ -12,7 +12,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const { selectedProducts: { data: { selectedProducts } }, products: { data: { products } } } = useSelector((state) => state)
 
-  const { handleSelectChange, handleSearch } = useTable(products)
+  const { handleSelectChange, handleSearch, handlePagination, currentPage, handleOrderColumns } = useTable(products)
   const [, loading, ,] = useRequest(
     {
       request: fetchProductsList,
@@ -28,11 +28,13 @@ const Products = () => {
     },
     []
   );
-    console.log(selectedProducts)
+  const paginatedProducts = useCallback(() => selectedProducts?.slice((currentPage - 1) * 10, currentPage * 10)
+    , [selectedProducts, currentPage])
+    
   return (
     <div>
       <OptionsMenu handleSelectChange={handleSelectChange} handleSearch={handleSearch} />
-      <Table columns={COLUMN_VALUES} data={selectedProducts} />
+      <Table columns={COLUMN_VALUES} data={paginatedProducts()} btnLabel='Add to cart' handlePagination={handlePagination} paginationData={selectedProducts} handleOrderColumns={handleOrderColumns} />
     </div>
   )
 }

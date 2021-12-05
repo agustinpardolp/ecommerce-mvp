@@ -8,7 +8,7 @@ const Dropdown = ({ options, onChange, label }) => {
         onChange(value)
     }
     return (
-        <SemanticDropdown clearable item placeholder={value || label} value={value} selection onChange={handleChange} options={options}>
+        <SemanticDropdown clearable item placeholder={value || label} value={value} selection onChange={handleChange} options={options || []}>
         </SemanticDropdown>
     )
 }
