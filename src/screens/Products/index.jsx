@@ -30,7 +30,7 @@ const Products = () => {
   );
   const paginatedProducts = useCallback(() => selectedProducts?.slice((currentPage - 1) * 10, currentPage * 10)
     , [selectedProducts, currentPage])
-    
+
   return (
     <div>
       <OptionsMenu handleSelectChange={handleSelectChange} handleSearch={handleSearch} />

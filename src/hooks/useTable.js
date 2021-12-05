@@ -12,11 +12,13 @@ const useTable = (products) => {
   const handleSelectChange = (value) => {
     if (!value) {
       manageDispatch(dispatch, updateProductList, products);
+      setCurrentPage(1);
     } else {
       const productsFiltered = products.filter(
         (elements) => elements.category === value
       );
       manageDispatch(dispatch, updateProductList, productsFiltered);
+      setCurrentPage(1);
     }
   };
 
@@ -25,6 +27,7 @@ const useTable = (products) => {
       element.title.toLowerCase().includes(value.toLowerCase())
     );
     manageDispatch(dispatch, updateProductList, search);
+    setCurrentPage(1);
   };
 
   const handleSearchDebouce = debounce(handleDataChange);

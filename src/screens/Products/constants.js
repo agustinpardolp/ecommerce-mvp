@@ -4,9 +4,5 @@ export const COLUMN_VALUES = [
   { name: "Price", id: 3 },
 ];
 
-export const DROPDOWN_RESET = {
-  RESET: "Select filter",
-};
-
 export const paginatedProducts = (selectedProducts, currentPage) =>
   selectedProducts?.slice((currentPage - 1) * 10, currentPage * 10);
