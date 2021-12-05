@@ -1,0 +1,4 @@
+export default {
+  SELECTED_PRODUCTS: 'SELECTED_PRODUCTS',
+  PRODUCTS: 'PRODUCTS'
+};
