@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { Header } from 'semantic-ui-react'
 import { FormattedMessage } from 'react-intl';
 import { StyledNavbar, StyledNavbarContainer } from './styled-components'
 import { Context } from '../LenguageWrapper';

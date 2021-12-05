@@ -12,14 +12,6 @@ const defaultProps = {
   effect: false,
   btnLabel: "accion button"
 };
-const newProps = {
-  imgUrl: "",
-  onClick: null,
-  value: "1",
-  title: "Title Card 1",
-  effect: false,
-  btnLabel: "accion button"
-};
 
 describe("Card", () => {
   test("should be defined", () => {

@@ -1,14 +1,6 @@
 import React from 'react'
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+import { Loader } from 'semantic-ui-react'
 
-const Spinner = () => {
-    return (
-        <Segment>
-            <Dimmer active inverted>
-                <Loader size='large'>Loading</Loader>
-            </Dimmer>
-        </Segment>
-    )
-}
+const Spinner = () => <Loader active inline='centered' />
 
 export default Spinner

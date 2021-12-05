@@ -3,11 +3,13 @@
   "navbar.subtitle": "All-In-One integrated shop platform",
   "submenu.title": "Products",
   "submenu.dropdown": "Categories",
-  "submenu.search": "Search ",
+  "submenu.search": "Search...",
   "table.title": "Title",
   "table.category": "Category",
   "table.price": "Price",
-  "table.no.result": " No se encontraron datos",
-  "button.mobile.add.cart": "Agregar al carro"
+  "table.no.result": "No results found",
+  "button.mobile.add.cart": "Add to cart",
+  "errorPage.message": "Ups something went wrong, please try again in few minutes",
+  "errorPage.back": "Back to home"
 }
 

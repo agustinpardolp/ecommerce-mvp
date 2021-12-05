@@ -6,7 +6,7 @@ export const selectedProducts = (
   },
   action
 ) => {
-  const { payload: { error, data } = {} } = action;
+  const { payload: { data } = {} } = action;
   switch (action.type) {
     case types.SELECTED_PRODUCTS:
       return {

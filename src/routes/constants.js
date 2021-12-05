@@ -1,5 +1,6 @@
-export const routes = {
-    any: '/*',
-    products: '/products',
+export const ROUTES = {
+    ANY: '/*',
+    PRODUCTS: '/products',
+    ERROR: '/error'
   };
   

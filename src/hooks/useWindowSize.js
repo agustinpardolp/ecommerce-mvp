@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { SCREEN_MOBILE_SIZE } from "../constants";
 
-
+//hook used to change between mobile and desktop
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,

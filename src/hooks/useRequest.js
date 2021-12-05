@@ -16,7 +16,7 @@ const executeAsyncRequest = async ({
     onError({ problem: response.problem, errorData: response.data });
   }
 };
-
+//function to manage all request, success and errors
 export const useRequest = (
   {
     request,
@@ -52,10 +52,12 @@ export const useRequest = (
         },
         onSuccess: (data) => {
           setState(data);
+          setLoading(false);
           withPostSuccess?.(data);
         },
         onError: (errorInfo) => {
           setError(() => errorInfo);
+          setLoading(false);
           withPostFailure?.(errorInfo);
         },
       });
