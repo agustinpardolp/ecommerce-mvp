@@ -5,7 +5,6 @@ export const products = (
     data: {
       products: [],
     },
-    error: "",
   },
   action
 ) => {

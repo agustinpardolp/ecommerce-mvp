@@ -4,6 +4,7 @@ import "semantic-ui-css/semantic.min.css";
 import "../src/assets/styles/index.css";
 import App from "./App";
 import LanguageWrapper from "../src/components/LenguageWrapper";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 ReactDOM.render(
   <LanguageWrapper>
@@ -12,3 +13,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
+serviceWorkerRegistration.register();
