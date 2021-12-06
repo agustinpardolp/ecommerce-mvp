@@ -13,7 +13,7 @@ const Card = ({
     btnColor
 }) => (
         <StyledCard data-testid="mobile-card">
-            <StyledImage src={imgUrl} />
+            <StyledImage src={imgUrl} alt='product' />
             <StyledCard.Content>
                 <StyledCard.Header>{title}</StyledCard.Header>
                 {children}

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { useIntl } from "react-intl";
@@ -8,7 +8,7 @@ import useTable from '../../hooks/useTable';
 import { fetchProductsList } from '../../services/products-services'
 import { getProductList, updateProductList } from '../../store/actions/productsActions';
 import OptionsMenu from './components/OptionsMenu'
-import { COLUMN_VALUES } from './constants'
+import { COLUMN_VALUES, paginatedProducts } from './constants'
 import { ROUTES } from '../../routes/constants';
 
 const Products = () => {
@@ -35,15 +35,13 @@ const Products = () => {
     },
     []
   );
-  const paginatedProducts = useCallback(() => selectedProducts?.slice((currentPage - 1) * 10, currentPage * 10)
-    , [selectedProducts, currentPage])
-
   return (
     <div>
       <OptionsMenu handleSelectChange={handleSelectChange} handleSearch={handleSearch} />
-      <Table loading={loading}
+      <Table
+        loading={loading}
         columns={COLUMN_VALUES}
-        data={paginatedProducts()}
+        data={paginatedProducts(selectedProducts, currentPage)}
         btnLabel={intl.formatMessage({ id: "button.mobile.add.cart" })}
         handlePagination={handlePagination}
         paginationData={selectedProducts}

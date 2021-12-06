@@ -7,14 +7,17 @@ const executeAsyncRequest = async ({
   onPrefetch,
   onSuccess,
   onError,
+  onPostFetch
 }) => {
   onPrefetch();
   const response = await request(values);
+
   if (response.status === REQUEST_OK) {
     onSuccess(response.data);
   } else {
     onError({ problem: response.problem, errorData: response.data });
   }
+  onPostFetch();
 };
 //function to manage all request, success and errors
 export const useRequest = (
@@ -52,19 +55,20 @@ export const useRequest = (
         },
         onSuccess: (data) => {
           setState(data);
-          setLoading(false);
           withPostSuccess?.(data);
         },
         onError: (errorInfo) => {
           setError(() => errorInfo);
-          setLoading(false);
           withPostFailure?.(errorInfo);
+        },
+        onPostFetch: () => {
+          setLoading(false);
         },
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [initialState, request]
   );
-
+ 
   return [state, loading, error, sendRequest];
 };
